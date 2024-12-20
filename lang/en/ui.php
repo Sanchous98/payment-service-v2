@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'api_key' => 'API Key',
+    'credentials' => 'Credentials',
+    'days' => 'Days',
+    'description' => 'Description',
+    'external_id' => 'External ID',
+    'integrations' => 'Integrations',
+    'interval' => 'Interval',
+    'merchant_descriptor' => 'Merchant descriptor',
+    'merchant_id' => 'Merchant ID',
+    'months' => 'Months',
+    'name' => 'Name',
+    'price' => 'Price',
+    'resource' => [
+        'accounts' => 'Accounts',
+        'payment_intents' => 'Payment Intents',
+        'payment_methods' => 'Payment Methods',
+        'refunds' => 'Refunds',
+        'subscription_plans' => 'Subscription Plans',
+        'subscriptions' => 'Subscriptions',
+    ],
+    'secret' => 'Secret',
+    'site_id' => 'Site ID',
+    'supported_currencies' => 'Supported currencies',
+    'type' => 'Type',
+    'webhook_signing_key' => 'Webhook signing key',
+    'weeks' => 'Weeks',
+    'years' => 'Years',
+];
