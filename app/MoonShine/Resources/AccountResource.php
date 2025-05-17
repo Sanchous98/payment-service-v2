@@ -25,7 +25,7 @@ class AccountResource extends ModelResource
 {
     protected string $model = Account::class;
 
-    protected string $title = 'Accounts';
+    protected string $title { get => 'ui.resource.accounts'; }
 
     private readonly string $stripe;
 
@@ -48,9 +48,10 @@ class AccountResource extends ModelResource
             Box::make([
                 ID::make()->sortable(),
                 Flex::make([
-                    Text::make('External ID', 'external_id'),
-                    Text::make(__('ui.description'), 'description'),
-                    Enum::make('type', 'credentials_type')
+                    Text::make('ui.external_id', 'external_id')->translateable(),
+                    Text::make('ui.description', 'description')->translateable(),
+                    Enum::make('ui.type', 'credentials_type')
+                        ->translateable()
                         ->options([
                             $this->stripe => 'Stripe',
                             $this->nuvei => 'Nuvei',
@@ -58,26 +59,32 @@ class AccountResource extends ModelResource
                         ->required(),
                 ]),
 
-                Template::make('credentials', 'credentials')
+                Template::make('ui.credentials', 'credentials')
+                    ->translateable()
                     ->fields([
                         Flex::make([
                             // stripe
-                            Text::make('API Key', 'api_key')
+                            Text::make('ui.api_key', 'api_key')
+                                ->translateable()
                                 ->required()
                                 ->showWhen('credentials_type', '=', $this->stripe)
                                 ->eye(),
-                            Text::make('Webhook Signing Key', 'webhook_signing_key')
+                            Text::make('ui.webhook_signing_key', 'webhook_signing_key')
+                                ->translatable()
                                 ->required()
                                 ->showWhen('credentials_type', '=', $this->stripe)
                                 ->eye(),
                             // nuvei
-                            Text::make('Merchant ID', 'merchant_id')
+                            Text::make('ui.merchant_id', 'merchant_id')
+                                ->translateable()
                                 ->required()
                                 ->showWhen('credentials_type', '=', $this->nuvei),
-                            Text::make('Site ID', 'site_id')
+                            Text::make('ui.site_id', 'site_id')
+                                ->translateable()
                                 ->required()
                                 ->showWhen('credentials_type', '=', $this->nuvei),
-                            Text::make('Secret', 'secret_key')
+                            Text::make('ui.secret', 'secret_key')
+                                ->translateable()
                                 ->required()
                                 ->showWhen('credentials_type', '=', $this->nuvei)
                                 ->eye(),
@@ -111,8 +118,8 @@ class AccountResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            Text::make('External ID', 'external_id'),
-            Text::make(__('ui.description'), 'description'),
+            Text::make('ui.external_id', 'external_id')->translateable(),
+            Text::make('ui.description', 'description')->translateable(),
         ];
     }
 
@@ -120,8 +127,8 @@ class AccountResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            Text::make('External ID', 'external_id'),
-            Text::make(__('ui.description'), 'description'),
+            Text::make('ui.external_id', 'external_id')->translateable(),
+            Text::make('ui.description', 'description')->translateable(),
         ];
     }
 }
