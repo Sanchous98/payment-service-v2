@@ -20,7 +20,7 @@ services:
         build:
             context: ./
             dockerfile: ./docker/php-fpm/Dockerfile
-            target: dev
+            target: k8s
             args:
                 PHP_VERSION: 8.4
         extra_hosts:
@@ -63,7 +63,7 @@ services:
         image: payment-es-app
         command: php artisan horizon
         volumes:
-            - .:/var/www/html:delegated
+            # - .:/var/www/html:delegated
             - ./docker/php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
         networks:
             - payment
